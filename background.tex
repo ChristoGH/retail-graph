@@ -1,0 +1,75 @@
+
+\subsection{Background}
+The spend data has been extracted and made available in csv format.The data includes the following headers.  Each row is represents a single transaction.
+\subsection{Naming explanation}
+\begin{itemize}
+  \item \textbf{\_id} A unique identifier from the MongoDB collections.
+  \item \textbf{Dedupegroup} A client number, for lookups in the datawarehouse.
+  \item \textbf{Seg\_L3\_Num} Level 3 client segmentation number.
+   \item \textbf{Seg\_L3\_STR} Level 3 client segmentation dscription.
+  \item \textbf{TransactionAmount} The amount of the transaction, negative for money flowing from an account.  Inflows are such as refunds are positive.
+  \item \textbf{TransactionDate} Date of transaction format \newline 'yyyy-mm-ddTHH:MM:SS.fffZ'
+  \item \textbf{dayname} String description of day, ie Sunday, Monday etc.
+  \item \textbf{period} The period of transaction, yyyyMM.
+  \item \textbf{month} A client number, for look ups in the data-warehouse.
+  \item \textbf{universaldate} A retail short date.  The first Sunday of every month is labelled the 1st, the first Monday of every month is labelled the 2nd etc.
+  \item \textbf{weekday} Integer representing the day of the week.
+  \item \textbf{weekth} The week of the year number.
+  
+  \item \textbf{companyindex} A unique identifier for classified companies.
+  \item \textbf{companyname} A unique string name for classified companies.
+  \item \textbf{franchisename} A unique string name for a merchant.
+  
+  \item \textbf{class\_id} Class identifier of company.
+  \item \textbf{subclass\_id} Sub-class identifier of company.
+  \item \textbf{group\_id} Group identifier of company.
+  \item \textbf{division\_id} Division identifier of company.
+  \item \textbf{discretionary} Classifying the type of spend at a classified company.
+  \item \textbf{channel} Transaction mode description.
+
+  \item \textbf{db} Name of source db.
+  \item \textbf{dbprefix} Name of source table.
+\end{itemize}
+
+
+\subsubsection{Name convention}
+Enforce a standard parameter naming convention.  Where possible we keep the origin names.  Small caps an underscore word separation:
+
+\begin{center}
+ \begin{tabular}{||r l||} 
+ \hline
+ Import & Neo4J  \\ [0.5ex] 
+ \hline\hline
+ Dedupegroup & dedupestatic \\ 
+ Seg\_L3\_Num & seg\_l3\_num \\
+ Seg\_L3\_STR & seg\_l3\_str \\
+ TransactionAmount & transactionamount \\
+ TransactionDate & transactiondate \\
+ dayname & dayname \\ 
+ period & period \\ 
+ month & month \\ 
+ 
+ universaldate & universaldate \\ 
+ weekday & weekday \\
+ weekth & weekth \\
+ companyindex & companyindex \\
+ companyname & companyname \\ 
+ franchisename & franchisename \\  
+ class\_id & class\_id \\ 
+ subclass\_id & subclass\_id \\ 
+ group\_id & group\_id \\
+ division\_id & division\_id \\
+ discretionary & discretionary \\ 
+ channel & channel \\ 
+ db & db \\ 
+ dbprefix & dbprefix \\
+ \hline
+\end{tabular}
+\end{center}
+
+
+The retail graph consists of two nodes, client and merchant. 
+
+In the graph database we enforce uniqueness constraints on the franchise name of the merchant node and the client identifier on the client node. 
+
+All transactions for the period March 2020 was loaded into a Neo4j graph database. For the purpose of this work we only look at one subset of merchant with subclass\_id = 56101.  These are known as the 'fast food' brands or formally 'Food service activities of take away counters', loosely as some offer sitdown services, blurring the line between a restaurant and a entity known traditionally as a fast food restaurant.

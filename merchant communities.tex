@@ -1,0 +1,130 @@
+\subsection{Merchant communities}
+
+The Louvain method is one way of detecting communities in large networks.  The Louvain algorithm is a hierarchical clustering tool.  By employing such clustering we should be able to extract geographical communities of merchants such as found in malls or defined by other infrastucture. The viability of new merchants and credit quality of existing merchant may be enriched by such knowledge.
+
+We limit ourselves to fast food restaurants or subclass\_id = 56101.
+
+In table \ref{tab:sa_fastfood_communites} are the most dominant communites of Sout african fastfood merchants.  Community 7916 has the least number of fast food merchant being 25. 
+
+\begin{center}
+    \begin{table}[]
+        \centering
+            \begin{tabular}{rr}
+            \toprule
+             Number of merchants &  SA Fast food community by ID \\
+            \midrule
+                      25 &                     7916 \\
+                      30 &                     2697 \\
+                      32 &                     6246 \\
+                      44 &                     6305 \\
+                      55 &                     6314 \\
+                      61 &                      290 \\
+                      69 &                     6790 \\
+                      72 &                     8577 \\
+                      84 &                     2160 \\
+                      96 &                     5959 \\
+                     109 &                     6244 \\
+                     115 &                     7805 \\
+                     122 &                     7579 \\
+                     128 &                     1875 \\
+                     149 &                     7544 \\
+                     187 &                     5898 \\
+                     241 &                     4914 \\
+                     258 &                      154 \\
+                     319 &                     6778 \\
+                     351 &                     5936 \\
+                     364 &                     6365 \\
+                     398 &                     8188 \\
+                     517 &                     1772 \\
+                     765 &                     5989 \\
+            \bottomrule
+            \end{tabular}
+        \caption{South African fast food communities}
+        \label{tab:sa_fastfood_communites}
+    \end{table}
+\end{center}
+
+Some fast food merchant do not belong to any communities as not all merchants fulfil the requirements which may for a variety of reasons.
+Having defined these communities one can now ask which of the (merchant) node is the most influential, a question similar the answer provided by the Google page rank algorithm (see reference).  The relevance of the 'merchant' rank could be manifold.  The highest ranked merchant could be subject to the most severe competition, but could also be seen to be at the center of a particular market and in the most lucrative area.  The merchant rank for fast food community 7916  is given in \ref{tab:merchant_community_7916}.  KFC Groblersdal is determined to be at the (transactional) heart of this cluster, based on its merchant rank.
+
+\begin{center}
+    \begin{table}[]
+        \centering
+            \begin{tabular}{lr}
+            \toprule
+               franchisename &     score \\
+            \midrule
+                KFC GROBLERS &  0.809422 \\
+              NANDOS GROBLER &  0.670787 \\
+                DEBONAIRS SI &  0.660889 \\
+                KFC MOUTSIYA &  0.601046 \\
+              WIMPY GROBLERS &  0.575624 \\
+                KFC KWAGGAFO &  0.470889 \\
+              STEERS MORATIW &  0.441075 \\
+              DEBONAIRS GROB &  0.394640 \\
+                  KFC MOLOTO &  0.277500 \\
+                McD Kwagga M &  0.267938 \\
+                McD Groblers &  0.259299 \\
+                KFC MOUTSE M &  0.232283 \\
+              KFC MOUTSIYA M &  0.213750 \\
+                KFC PHOLA PA &  0.195549 \\
+              DEBONAIRS MORA &  0.186734 \\
+              DEBONAIRS SIYA &  0.186734 \\
+              DEBONAIRS JANE &  0.150000 \\
+              KFC GROBLERSDA &  0.150000 \\
+                KFC JANE FUR &  0.150000 \\
+                KFC MARBLE H &  0.150000 \\
+                KFC Moratiwa &  0.150000 \\
+              KFC PHOLA PARK &  0.150000 \\
+                KFC SIYABUSW &  0.150000 \\
+               KFC SIYABUSWA &  0.150000 \\
+             McD Groblersdal &  0.150000 \\
+            \bottomrule
+            \end{tabular}
+        \caption{Most prominent merchants in community 7916}
+        \label{tab:merchant_community_7916}
+    \end{table}
+\end{center}
+
+By repeating the merchant rank algorithm for each cluster we find the centers of all merchant (fast food) clusters.  In table \ref{tab:summary_fastfood_clusters} is listed the centers of all fast food merchant clusters, their geographical name (loosely based on the closest town) the number of merchants ffound in the cluster and the name of the cluster as it is found in the database as well as the community number.  The latter is a arbitrarily chosen number from the algorithm.
+
+
+\begin{center}
+    \begin{table}[htb]
+        \centering
+            \begin{tabular}{rlrl}
+            \toprule
+             community &              area &  membercount & franchisename\_1 \\
+            \midrule
+                7916.0 &       Groblersdal &           25 &    KFC GROBLERS \\
+                2697.0 &         Bethlehem &           30 &  MCD Phuthaditj \\
+                6246.0 &       Ventersdorp &           32 &    STEERS VENTE \\
+                6305.0 &         Worcester &           44 &  STEERS RESTAUR \\
+                6314.0 &        Klerksdorp &           55 &    WIMPY GOUDKO \\
+                 290.0 &       Port Edward &           61 &  KFC IZINGOLWEN \\
+                6790.0 &         Kimberley &           69 &    KAUAI KIMBER \\
+                8577.0 &    Vanderbijlpark &           72 &    MCDONALD'S V \\
+                2160.0 &        Emalahleni &           84 &  WIESENHOF COSM \\
+                5959.0 &         Nelspruit &           96 &    KFC NELSPRUI \\
+                6244.0 &      Bloemfontein &          109 &    STEERS PRELL \\
+                7805.0 &  Pietermaritzburg &          115 &    MCDONALD'S C \\
+                7579.0 &        Rustenburg &          122 &    KFC SUN VILL \\
+                1875.0 &           Makhado &          128 &    NANDOS MAKHA \\
+                7544.0 &            Eshowe &          149 &    NANDOS ESHOW \\
+                5898.0 &    Port Elizabeth &          187 &    WIMPY METLIF \\
+                4914.0 &       East London &          241 &    KEI STEERS D \\
+                 154.0 &         Centurion &          258 &  BURGER KING JE \\
+                6778.0 &        Wonderboom &          319 &  MCD Sammy Mark \\
+                5936.0 &          Alberton &          351 &    WIMPY NEW RE \\
+                6365.0 &      Kempton Park &          364 &    SPUR BRAVE H \\
+                8188.0 &           Florida &          398 &    WIMPY FLORID \\
+                1772.0 &         Umhlangha &          517 &  MCD MountEdgec \\
+                5989.0 &         Cape Town &          765 &   MCD Vangate ( \\
+            \bottomrule
+            \end{tabular}
+            \caption{Summary of SA fast food clusters}
+        \label{tab:summary_fastfood_clusters}
+    \end{table}
+\end{center}
+
+There is therefore 24 easily discernible fast food merchant clusters for March 2020.

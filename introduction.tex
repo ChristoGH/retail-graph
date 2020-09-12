@@ -1,0 +1,20 @@
+
+\section{Introduction}
+
+In this project goal is to cluster clients on behaviour, and inturn cluster merchants on client preferences.  Clustering will group like clients together and allow us to assign a number to such a cluster and its members.  
+
+The bank has rich data pertaining to the shopping behaviour of its clients.
+Enriching this data should hold many benefit.
+
+The behaviour of retail customers can be likened to a person traversing the internet.  In a single month a shopper will execute a retail path from merchant to merchant (shop).  Some shoppers would have a limited and fixed set of shops visited.  Others may have many shops and a wide variety.  Visits of shops may also differ in frequency, spend and date.  However, shopper may visit shops without concluding a spend or transact using cash.  These behaviours are effectively hidden from sight.  However the detail the bank possesses is arguably more detailed that what a search engine may have. Web pages are extremely diverse and is an encyclopedia of human knowledge and behaviour, the retail network the bank identifies is about 500000, but constitutes the full retail experience clients can enjoy.  Many of these retails points are abroad and some are variation of the same merchant.
+
+Google aims to produce precision search results. It calculates a quality ranking for each web page. This ranking methodology is described in First, it makes use of the link structure of the Web to calculate a quality ranking for each web page. This ranking is called PageRank and is described in detail in \citep{brin_page_1998}. Second, Google utilizes link to improve search results.
+
+An important resource to search engines, Google the most notable example, the citation or link graph of the web.  The concept of a page rank, an objective measure of the importance of a citation importance coincides closely with the subjective notion of citation importance.  PageRank in the hands of Google has become a foremost method of prioritising search results.
+
+PageRank is a model of user behaviour. Applied to the internet, the probability that a random surfer visits a page is its PageRank.  In this manner, the PageRank applied to the retail graph discuss here is the probability that a random shopper will visit a particular merchant.  Incorporated into the notion of a PageRank is a damping factor called d, where d is the probability that at each page our random surfer will lose interest and request another random page
+
+The bank retail network discussed here consists of two types of nodes. The first is the client node.  A graph approach to the bank places the client at the center of the data, arguably where it should be as opposed to a field in and RDBMS.  The clients of the bank constitute a sample of the population of all shoppers. Clients earn and spend money and conduct their affairs through a variety of methods.  A subset of these actions are the card 'swipes' at point of sales (POS) devices.  Originally these devices were a physical machine, an online purchase now would be indistinuishable from a physival sale.  The two actions are vastly different though.  The one required a physical presence of the client the other could have been conducted at any remote site.
+The merchant node is the other important node.  A client visits a merchant and when tranmsacted has given the merchant a visit.  In a month a client then traverses many merchant nodes.  In this manner merchants becomes cconneccted via clientsand when the client node is replace by such merchant link we end up with a graph of merchants.
+Similarly clients become linked via a merchant.  By dropping the merchant node we create a client graph.  A client graph will link together clients with similar preferences and similar shopping habits.
+

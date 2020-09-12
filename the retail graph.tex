@@ -1,0 +1,219 @@
+\section{The retail graph}
+\input{background.tex}
+
+\subsubsection{The client node}
+The client node has the following properties:
+\begin{itemize}
+%   \item \textbf{\_id} A unique identifier from the MongoDB collections.
+  \item \textbf{dedupestatic}  This is the client identifier and has a uniqueness  constraint placed on it.
+  \item \textbf{seg\_l3\_num}
+   \item \textbf{seg\_l3\_str}
+   \item \textbf{period}   
+  \item \textbf{totaltransactionamount} The aggregated value of all transactions performed by this client.
+  \item \textbf{totaltransactioncount} The aggregated count of all transactions performed by this client.
+%   \item \textbf{transactiondatelist} A list of the dates on which a transaction occurred.
+\end{itemize}
+
+ An example of two client nodes and their properties are shown in table \ref{tab:twoclientproperties}.  Some of the properties will be explained later.  Client nodes can contain any number of (client) properties.
+
+\begin{center}
+\begin{table}[htb!]
+    \centering
+    \begin{tabular}{lll}
+    \toprule
+    %  \hline
+                      Attribute &                              client 1 &                                client 2 \\
+    %  \hline\hline
+    \midrule
+                         period &                                202003 &                                  202003 \\
+        % triadic\_community &                                  7916 &                                    7916 \\
+    %  client\_link\_community\_7916 &                                  1415 & 1415 \\
+                     seg\_l3\_num &                                   324 &                                     312 \\
+         total transaction amount &                              -5027.83 &                                 -674.93 \\
+          total transaction count &                                    30 &                                      10 \\
+                %   dedupestatic &                       1.940665861e+11 & 1.919770742e+11 \\
+    %  client\_link\_community\_6241 &                                  1421 &                                 1336928 \\
+% seg\_l3\_str &  CB - PBCVM - Middle Market - Matured &  CB - PBCVM - Mass Market - Traditional \\
+    \bottomrule
+    \end{tabular}
+    \caption{Two clients and their properties}
+    \label{tab:twoclientproperties}
+\end{table}
+\end{center}
+
+Visually these two nodes appear on screen as figure \ref{fig:twoclientnodes}.
+
+\begin{figure}[ht]
+\caption{Two client nodes}
+\centering
+\includegraphics[width=\textwidth]{png/graph_client12.png}
+\label{fig:twoclientnodes}
+\end{figure}
+
+\subsubsection{The merchant node}
+
+The merchant node has the following properties:
+
+\begin{itemize}
+
+  \item \textbf{totaltransactionamount} The total amount spent at this merchant by all clients.
+  \item \textbf{totaltransactioncount} The total number of transactions by all clients at this merchant.
+  \item \textbf{companyindex} This is a number assigned to a company.  A company may have many merchants and many merchant nodes will have the same companyindex.
+  \item \textbf{companyname} The name of the company that is the owner of the merchant.  The relationship between company to merchant is therefore one to many.
+  \item \textbf{franchisename} This is the name of the node, or the merchant name.  This name provides more detail, such as an implicit reference to the location of the merchant.
+%   \item \textbf{period} 
+ \item \textbf{class\_id} The class identifier of the company.
+  \item \textbf{subclass\_id} Sub-class identifier of company.
+  \item \textbf{group\_id} Group identifier of company.
+  \item \textbf{division\_id} Division identifier of company.
+  \item \textbf{discretionary} Classifying the type of spend at a classified company.  This is a subjective classification.
+\end{itemize}
+
+An example of two merchant nodes and their properties are shown in table \ref{tab:twomerchantproperties}.  Merchant nodes can contain any number of (merchant) properties.
+
+\begin{center}
+    \begin{table}[htb!]
+        \centering
+    \begin{tabular}{lll}
+    \toprule
+        %  \hline
+                   attribute &      merchant 1 &  merchant 2 \\
+    %  \hline\hline                   
+    \midrule
+                      period &          202003 &      202003 \\
+                 
+        %   triadic\_community &            7242 &        7242 \\
+     triadic\_56101\_community &            7916 &        7916 \\
+                 companyname &             KFC &         KFC \\
+                companyindex &              65 &          65 \\   
+               discretionary &               2 &           2 \\
+                     channel &               0 &           0 \\
+                 division\_id &              56 &          56 \\
+                    group\_id &             561 &         561 \\   
+                    class\_id &            5610 &        5610 \\ 
+                 subclass\_id &           56101 &       56101 \\                   
+               franchisename &  KFC PHOLA PARK &  KFC MOLOTO \\                 
+      totaltransactionamount &         -3509.3 &    -20780.8 \\                 
+       totaltransactioncount &              37 &         206 \\
+    \bottomrule
+    \end{tabular}
+        \caption{Two merchants and their properties}
+        \label{tab:twomerchantproperties}
+    \end{table}
+\end{center}
+
+
+Visually these two merchant nodes appear on screen as figure \ref{fig:twomerchantnodes}.
+
+\begin{figure}[ht]
+\caption{Two merchant nodes}
+\centering
+\includegraphics[width=\textwidth]{png/merchant12.png}
+\label{fig:twomerchantnodes}
+\end{figure}
+
+% \begin{center}
+%     \begin{tabular}{lllll}
+% \toprule
+%      \hline
+%          attribute &   client 1  &  client 1    \\
+%               \hline\hline
+% \midrule
+%             period &        202003 &        202003  \\
+%             merchant & KFC PHOLA PARK &  KFC MOLOTO  \\
+%  transactionamount &         -54.9 &         -31.9 \\
+%         %   dbprefix &        CMProd &        CAProd &        CAProd &        CAProd \\
+%   transactioncount &             1 &             1 \\
+%                 % db &  CMProd202003 &  CAProd202003 &  CAProd202003 &  CAProd202003 \\
+% \bottomrule
+% \end{tabular}
+% \end{center}
+
+
+% \begin{center}
+%     \begin{tabular}{lllll}
+% % \toprule
+%      \hline
+%          attribute &    client 2  &  client 2  \\
+%               \hline\hline
+% % \midrule
+%             period &           202003 &        202003 \\
+%             merchant & KFC PHOLA PARK &  KFC MOLOTO \\
+%  transactionamount &          -19.9 &         -49.8 \\
+%         %   dbprefix &        CMProd &        CAProd &        CAProd &        CAProd \\
+%   transactioncount &             1 &             2 \\
+%                 % db &  CMProd202003 &  CAProd202003 &  CAProd202003 &  CAProd202003 \\
+% % \bottomrule
+% \end{tabular}
+% \end{center}
+
+
+\subsubsection{The transaction relationship}
+All transactions between a client and one merchant are represented by a single relationship named TRANSACTED\_AT.  The direction is from client to merchant.  This relationship has the following properties:
+
+\begin{itemize}
+  \item \textbf{totaltransactionamount} The total amount of all transactions between a client and a merchant.
+  \item \textbf{totaltransactioncount} A running count of the number of transactions between a client and a merchant.  
+%   \item \textbf{db} Name of source db for this transaction.
+%   \item \textbf{dbprefix} Name of source table for this transaction.
+\end{itemize}
+
+An example of how merchant and client nodes are related by means of a transaction, is given in figure \ref{fig:graphexample} on page , for one client and two merchants. 
+
+\begin{figure}[htb]
+\caption{Client and Merchant relationship}
+\centering
+\includegraphics[width=\textwidth]{graphexample.png}
+\label{fig:graphexample}
+\end{figure}
+
+This client may have visited many more merchants, not shown here in this simple representation, and the merchants shown here in turn in all likelihood were visited by many more clients.
+
+Two clients may also be linked in  a similar manner, by virtue of having transacted at the same merchant. Similarity between clients increase as more merchants are added into the equation.  On a company level, similarity has a preference flavour, while on the level of a merchant, similarity also has a distinct geographical implication.
+
+Extending the above examples, a client may have transacted at two merchants during a month and another client may have done the same, visiting exactly the same merchants, see the example in figure \ref{fig:two clients_two merchants}.
+
+\begin{figure}[htb!]
+\caption{Two clients and two merchants}
+\centering
+\includegraphics[width=\textwidth]{png/client_merchant_graph.png}
+\label{fig:two clients_two merchants}
+\end{figure}
+
+\subsubsection{Merchant-merchant relationships}
+
+
+The Louvain method is one way of detecting communities in large graphs such as the South African (Nedbank) retail network.  The Louvain algorithm is a hierarchical clustering tool.  By employing such clustering we should be able to extract geographical communities of merchants such as found in malls or defined by infrastucture and convenience. The viability of new merchants and credit quality of existing merchant may be enriched by such knowledge.
+
+\subsubsection{Creating client relationships}
+
+\begin{center}
+\begin{tabular}{rr}
+\toprule
+ client count &  client\_link\_community \\
+\midrule
+    48 &                    822 \\
+   108 &                    232 \\
+   112 &                     44 \\
+   146 &                     86 \\
+   172 &                   1415 \\
+   206 &                     27 \\
+   237 &                    220 \\
+   238 &                   1779 \\
+   288 &                     95 \\
+   333 &                     75 \\
+   372 &                     31 \\
+   429 &                    176 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\input{the merchant edge.tex}
+\input{merchant communities.tex}
+\input{client communities}
+\subsection{The Merchant Rank}
+
+Two graphs exist each sharing the Merchant nodes.  One has Merchants connected via the MERCHANT\_FEET\_LINK and the other via the MERCHANT\_FEET\_LINK
+
+\subsubsection{The Client Edge}
+
